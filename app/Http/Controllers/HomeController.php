@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends BaseController
 {
@@ -25,19 +26,17 @@ class HomeController extends BaseController
             $errorMsg = "Es ist ein Fehler aufgetreten. Bitte geben Sie eine gültige E-Mail-Adresse ein";
             return \redirect('/')->with('errorMsg',$errorMsg);
         }
+        DB::beginTransaction();
         $isNotInDatabase = \Newsletter::checkIfEmailIsInDatabase($user_mail);
         if ($isNotInDatabase) {
             \Newsletter::insertMailIntoDatabase($user_mail);
+            DB::commit();
             $successMsg = "Sie haben sich erfolgreich für unseren Newsletter angemeldet";
         }
         else {
             $errorMsg = "Sie haben sich bereits mit dieser E-Mail registriert";
             return \redirect('/')->with('errorMsg',$errorMsg);
         }
-
         return \redirect('/')->with('successMsg',$successMsg);
-
-
-
     }
 }
