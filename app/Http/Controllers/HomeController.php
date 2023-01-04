@@ -21,7 +21,6 @@ class HomeController extends BaseController
 
     public function newsletter(Request $rd) {
         $user_mail = $rd->input('newsletter-mail');
-        $errorMsg = NULL;
         if (empty($user_mail) || !filter_var($user_mail,FILTER_VALIDATE_EMAIL)) {
             $errorMsg = "Es ist ein Fehler aufgetreten. Bitte geben Sie eine gültige E-Mail-Adresse ein";
             return \redirect('/')->with('errorMsg',$errorMsg);
@@ -29,11 +28,15 @@ class HomeController extends BaseController
         $isNotInDatabase = \Newsletter::checkIfEmailIsInDatabase($user_mail);
         if ($isNotInDatabase) {
             \Newsletter::insertMailIntoDatabase($user_mail);
+            $successMsg = "Sie haben sich erfolgreich für unseren Newsletter angemeldet";
         }
         else {
             $errorMsg = "Sie haben sich bereits mit dieser E-Mail registriert";
+            return \redirect('/')->with('errorMsg',$errorMsg);
         }
-        return \redirect('/')->with('errorMsg',$errorMsg);
+
+        return \redirect('/')->with('successMsg',$successMsg);
+
 
 
     }

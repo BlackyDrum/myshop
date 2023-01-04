@@ -169,6 +169,10 @@
             <div class="text-red-600 font-bold">
                 {{Session::get('errorMsg')}}
             </div>
+        @elseif(Session::get('successMsg'))
+            <div class="text-green-500 font-bold">
+                {{Session::get('successMsg')}}
+            </div>
         @endif
         <div>
             <p class="text-gray-800 text-sm">Wir bringen Sonderangebote, Rabattaktionen und persönliche Trends zu dir nach Hause.</p>
