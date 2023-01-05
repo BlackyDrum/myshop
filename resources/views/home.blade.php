@@ -212,7 +212,6 @@
         </div>
         <div >
             <form class="grid grid-cols-2 gap-10 place-items-center max-lg:hidden relative" method="post" action="/newsletter-anmeldung">
-                @csrf
                 <div class="ml-auto">
                     <input type="email" name="newsletter-mail" class="rounded-lg" size="40" placeholder="Ihre E-Mail-Adresse">
                 </div>
@@ -222,7 +221,6 @@
                 </div>
             </form>
             <form class="grid grid-cols-1 grid-rows-2 place-items-center lg:hidden gap-2" method="post" action="/newsletter-anmeldung">
-                @csrf
                 <div>
                     <input type="email" name="newsletter-mail" class="rounded-lg" size="40" placeholder="Ihre E-Mail-Adresse">
                 </div>
