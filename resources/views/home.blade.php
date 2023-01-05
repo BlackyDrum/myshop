@@ -212,7 +212,7 @@
         </div>
         <div >
             <form class="grid grid-cols-2 gap-10 place-items-center max-lg:hidden relative" method="post" action="/newsletter-anmeldung">
-                @csrf
+                {{ csrf_field() }}
                 <div class="ml-auto">
                     <input type="email" name="newsletter-mail" class="rounded-lg" size="40" placeholder="Ihre E-Mail-Adresse">
                 </div>
@@ -222,7 +222,7 @@
                 </div>
             </form>
             <form class="grid grid-cols-1 grid-rows-2 place-items-center lg:hidden gap-2" method="post" action="/newsletter-anmeldung">
-                @csrf
+                {{ csrf_field() }}
                 <div>
                     <input type="email" name="newsletter-mail" class="rounded-lg" size="40" placeholder="Ihre E-Mail-Adresse">
                 </div>
@@ -232,6 +232,7 @@
             </form>
         </div>
     </div>
+    <footer>
     <div class="mt-5 bg-neutral-800 h-80 text-white flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
         <div class="mt-20">
             <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
@@ -357,6 +358,6 @@
     <div class="bg-neutral-800 h-16 text-neutral-400 text-center text-sm">
         <p>Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
     </div>
-
+    </footer>
 </main>
 </body>
