@@ -2,14 +2,17 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="p-2 rounded-lg bg-yellow-100">
             <div class="flex items-center justify-between flex-wrap">
-                <div class="w-0 flex-1 items-center hidden md:inline">
-                    <p class="ml-3 text-black cookie-consent__message">
-                        {!! trans('cookie-consent::texts.message') !!}
-                    </p>
-                </div>
-                <div class="mt-2 flex-shrink-0 w-full sm:mt-0 sm:w-auto">
+
+                <p class="ml-3 text-black cookie-consent__message text-center flex-1 items-center  md:inline">
+                    <?php echo 'Diese Website verwendet Cookies, die uns dabei helfen zu verstehen, wie unsere Webseite genutzt wird. Ich bin damit einverstanden und kann meine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen oder ändern.'; ?>
+                </p>
+
+                <div class="mt-2 flex w-full sm:mt-0 sm:w-auto relative max-sm:left-0">
+                    <button onclick="hideCookieDialog()" class="js-cookie-consent-disagree cookie-consent__disagree cursor-pointer ml-2 mr-2 flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-yellow-800 bg-yellow-200 hover:bg-yellow-300">
+                        <?php echo 'Ablehnen'; ?>
+                    </button>
                     <button class="js-cookie-consent-agree cookie-consent__agree cursor-pointer flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-yellow-800 bg-yellow-400 hover:bg-yellow-300">
-                        {{ trans('cookie-consent::texts.agree') }}
+                        <?php echo 'Akzeptieren'; ?>
                     </button>
                 </div>
             </div>
