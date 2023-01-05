@@ -198,13 +198,13 @@
         <div>
             <h2 class="font-bold text-2xl">Newsletter abonnieren</h2>
         </div>
-        @if(Session::get('errorMsg'))
+        @if($errorMsg)
             <div class="text-red-600 font-bold">
-                {{Session::get('errorMsg')}}
+                {{$errorMsg}}
             </div>
-        @elseif(Session::get('successMsg'))
+        @elseif($successMsg)
             <div class="text-green-500 font-bold">
-                {{Session::get('successMsg')}}
+                {{$successMsg}}
             </div>
         @endif
         <div>
@@ -212,7 +212,7 @@
         </div>
         <div >
             <form class="grid grid-cols-2 gap-10 place-items-center max-lg:hidden relative" method="post" action="/newsletter-anmeldung">
-                {{ csrf_field() }}
+                @csrf
                 <div class="ml-auto">
                     <input type="email" name="newsletter-mail" class="rounded-lg" size="40" placeholder="Ihre E-Mail-Adresse">
                 </div>
@@ -222,7 +222,7 @@
                 </div>
             </form>
             <form class="grid grid-cols-1 grid-rows-2 place-items-center lg:hidden gap-2" method="post" action="/newsletter-anmeldung">
-                {{ csrf_field() }}
+                @csrf
                 <div>
                     <input type="email" name="newsletter-mail" class="rounded-lg" size="40" placeholder="Ihre E-Mail-Adresse">
                 </div>

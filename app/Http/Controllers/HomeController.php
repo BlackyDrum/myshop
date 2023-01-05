@@ -15,8 +15,13 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends BaseController
 {
     public function index() {
+        $errMsg = $_SESSION['errMsg'] ?? NULL;
+        $successMsg = $_SESSION['successMsg'] ?? NULL;
+        unset($_SESSION['errMsg']);
+        unset($_SESSION['successMsg']);
         return view('home',[
-            'errorMsg' => NULL
+            'errorMsg' => $errMsg,
+            'successMsg' => $successMsg
         ]);
     }
 
@@ -24,7 +29,8 @@ class HomeController extends BaseController
         $user_mail = $rd->input('newsletter-mail');
         if (empty($user_mail) || !filter_var($user_mail,FILTER_VALIDATE_EMAIL)) {
             $errorMsg = "Es ist ein Fehler aufgetreten. Bitte geben Sie eine gültige E-Mail-Adresse ein";
-            return \redirect('/')->with('errorMsg',$errorMsg);
+            $_SESSION['errMsg'] = $errorMsg;
+            return \redirect()->action([HomeController::class,'index']);
         }
         DB::beginTransaction();
         $isNotInDatabase = \Newsletter::checkIfEmailIsInDatabase($user_mail);
@@ -32,11 +38,12 @@ class HomeController extends BaseController
             \Newsletter::insertMailIntoDatabase($user_mail);
             DB::commit();
             $successMsg = "Sie haben sich erfolgreich für unseren Newsletter angemeldet";
+            $_SESSION['successMsg'] = $successMsg;
         }
         else {
             $errorMsg = "Sie haben sich bereits mit dieser E-Mail-Adresse registriert";
-            return \redirect('/')->with('errorMsg',$errorMsg);
+            $_SESSION['errMsg'] = $errorMsg;
         }
-        return \redirect('/')->with('successMsg',$successMsg);
+        return \redirect()->action([HomeController::class,'index']);
     }
 }
