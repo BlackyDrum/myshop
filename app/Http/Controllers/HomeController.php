@@ -41,6 +41,7 @@ class HomeController extends BaseController
             $_SESSION['successMsg'] = $successMsg;
         }
         else {
+            DB::rollBack();
             $errorMsg = "Sie haben sich bereits mit dieser E-Mail-Adresse registriert";
             $_SESSION['errMsg'] = $errorMsg;
         }
