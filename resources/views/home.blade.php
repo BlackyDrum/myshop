@@ -354,10 +354,13 @@
             <img src="img/tiktok-app-icon-8.png" class="inline mt-5 ml-3">
         </div>
     </div>
-    <hr class="">
-    <div class="bg-neutral-800 h-16 text-neutral-400 text-center text-sm">
-        <p>Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
+
+    <div class="bg-neutral-800 h-16 text-neutral-400 text-center text-sm max-lg:hidden">
+        <p class="">Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
     </div>
+        <div class="bg-neutral-800 h-32 text-neutral-400 text-center text-sm lg:hidden pt-20">
+            <p class="">Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
+        </div>
     </footer>
 </main>
 </body>
