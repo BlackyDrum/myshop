@@ -151,13 +151,13 @@
 
     <div class="bg-white mt-10 max-lg:hidden h-60 pb-12 grid grid-cols-3 grid-rows-2 place-items-center gap-5 text-gray-800">
         <div class="">
-            <i class="fa-solid fa-truck scale-250 text-pink-600"></i>
+            <i class="fa-solid fa-truck scale-150 text-pink-600"></i>
         </div>
         <div class="">
-            <i class="fa-solid fa-hand-holding-dollar scale-250 text-pink-600"></i>
+            <i class="fa-solid fa-hand-holding-dollar scale-150 text-pink-600"></i>
         </div>
         <div class="">
-            <i class="fa-solid fa-envelope scale-250 text-pink-600"></i>
+            <i class="fa-solid fa-envelope scale-150 text-pink-600"></i>
         </div>
         <div class="text-center mx-5">
             Wir versprechen nur schonend behandelte Produkte: alle Produkte werden in der EU angefertig und verpackt.
@@ -174,26 +174,26 @@
     <div class="bg-white mt-10 lg:hidden h-128 grid grid-cols-1 grid-rows-3 place-items-center gap-5 text-gray-800">
         <div class="text-center mx-10">
             <div class="">
-                <i class="fa-solid fa-truck scale-250 text-pink-600 my-5"></i>
+                <i class="fa-solid fa-truck scale-150 text-pink-600 my-5"></i>
             </div>
             Wir versprechen nur schonend behandelte Produkte: alle Produkte werden in der EU angefertig und verpackt.
         </div>
         <div class="text-center mx-10">
             <div class="">
-                <i class="fa-solid fa-hand-holding-dollar scale-250 text-pink-600 my-5"></i>
+                <i class="fa-solid fa-hand-holding-dollar scale-150 text-pink-600 my-5"></i>
             </div>
             Dass wir ohne Zwischenhändler arbeiten, führt noch zu einem weiteren Vorteil: Die Kosten, die wir hier einsparen, können wir als Preisvorteil direkt an dich und alle unsere Kunden weitergeben.
         </div>
         <div class="text-center mx-10">
             <div class="">
-                <i class="fa-solid fa-envelope scale-250 text-pink-600 my-5"></i>
+                <i class="fa-solid fa-envelope scale-150 text-pink-600 my-5"></i>
             </div>
             Echte Freunde sagen einander auch, falls mal etwas nicht ganz rund läuft. Sollte Qualität dich also einmal nicht überzeugen, freuen wir uns über ehrliches Feedback.
         </div>
     </div>
     <div class="w-full lg:h-40 h-72 text-center mt-10 grid grid-cols-1 grid-rows-4 gap">
         <div>
-            <i class="fa-solid fa-envelope-open-text text-gray-800 scale-250"></i>
+            <i class="fa-solid fa-envelope-open-text text-gray-800 scale-150"></i>
         </div>
         <div>
             <h2 class="font-bold text-2xl">Newsletter abonnieren</h2>
