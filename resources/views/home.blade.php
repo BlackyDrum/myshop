@@ -176,7 +176,7 @@
             <div class="">
                 <i class="fa-solid fa-truck scale-250 text-pink-600 my-5"></i>
             </div>
-            Wir versprechen nur schonend behandelte Produkte: das originale Geschmackserlebnis, das die Menschen im Orient bereits seit Jahrtausenden lieben.
+            Wir versprechen nur schonend behandelte Produkte: alle Produkte werden in der EU angefertig und verpackt.
         </div>
         <div class="text-center mx-10">
             <div class="">
@@ -232,8 +232,130 @@
             </form>
         </div>
     </div>
-    <div class="mt-5 bg-white h-32">
-
+    <div class="mt-5 bg-neutral-800 h-80 text-white flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
+        <div class="mt-20">
+            <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
+            <div>Tel.: 02402 127398</div><br>
+            <h4>Öffungszeiten</h4>
+            <div>Mo - Fr: 10-15 Uhr</div>
+        </div>
+        <div class="mt-20">
+            <h4 class="text-neutral-400">Kundenservice</h4><br>
+            <div>Versand</div>
+            <div>Widerruf</div>
+            <div>Kontakt</div>
+            <div>FAQ</div>
+            <div>Großhandel/Einzelhandel</div>
+        </div>
+        <div class="mt-20">
+            <h4 class="text-neutral-400">Aytan</h4><br>
+            <div>Mission</div>
+            <div>Geschichte</div>
+            <div>Produktionsprozess</div>
+            <div>Jobs</div>
+            <div>Kooperationen</div>
+        </div>
+        <div class="mt-20">
+            <h4 class="text-neutral-400">Rechtliches</h4><br>
+            <div>Impressum</div>
+            <div>AGB</div>
+            <div>Datenschutz</div>
+        </div>
+        <div class="mt-20">
+            <h4 class="text-neutral-400">Aytan International</h4><br>
+            <ul class="list-disc">
+                <li>Deutschland</li>
+                <li>Schweden</li>
+                <li>Europa</li>
+            </ul>
+        </div>
+    </div>
+    <div class="lg:hidden mt-5 bg-neutral-800 h-224 text-white"><br>
+        <div class="ml-8">
+            <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
+            <div>Tel.: 02402 127398</div><br>
+            <h4>Öffungszeiten</h4>
+            <div>Mo - Fr: 10-15 Uhr</div>
+        </div><br>
+        <div class="ml-8">
+            <h4 class="text-neutral-400">Kundenservice</h4><br>
+            <div>Versand</div>
+            <div>Widerruf</div>
+            <div>Kontakt</div>
+            <div>FAQ</div>
+            <div>Großhandel/Einzelhandel</div>
+        </div><br>
+        <div class="ml-8">
+            <h4 class="text-neutral-400">Aytan</h4><br>
+            <div>Mission</div>
+            <div>Geschichte</div>
+            <div>Produktionsprozess</div>
+            <div>Jobs</div>
+            <div>Kooperationen</div>
+        </div><br>
+        <div class="ml-8">
+            <h4 class="text-neutral-400">Rechtliches</h4><br>
+            <div>Impressum</div>
+            <div>AGB</div>
+            <div>Datenschutz</div>
+        </div><br>
+        <div class="ml-8">
+            <h4 class="text-neutral-400">Aytan International</h4><br>
+            <ul class="list-disc">
+                <li>Deutschland</li>
+                <li>Schweden</li>
+                <li>Europa</li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="bg-neutral-800 h-60 text-neutral-400 flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
+        <div class="mt-20">
+            <div>Versand</div>
+            <div class="mt-5">
+                <img src="img/2000px-DHL_Logo.png">
+            </div>
+        </div>
+        <div class="mt-20">
+            <div>Zahlung</div>
+            <img src="img/1280px-PayPal_logo.png" class="inline mt-5  scale-100">
+            <img src="img/Vorkasse.png" class="inline mt-5 ml-3 scale-75">
+            <img src="img/Visa_2014_logo_detail.png" class="inline mt-5 ml-3 scale-100">
+            <img src="img/mc_hrz_thmb_282_2x.png" class="inline mt-5 ml-3 scale-100">
+        </div>
+        <div class="mt-20">
+            <div>Social Media</div>
+            <img src="img/f_logo_RGB-Hex-Blue_512.png" class="inline mt-5 ml-3">
+            <img src="img/2000px-Instagram_logo_2016.png" class="inline mt-5 ml-3">
+            <img src="img/image_preview.png" class="inline mt-5 ml-3">
+            <img src="img/tiktok-app-icon-8.png" class="inline mt-5 ml-3">
+        </div>
+    </div>
+    <div class="bg-neutral-800 h-96 text-neutral-400 lg:hidden">
+        <div class="ml-8"><br>
+            <div>Versand</div>
+            <div class="mt-5">
+                <img src="img/2000px-DHL_Logo.png">
+            </div>
+        </div>
+        <div class="mt-20 ml-8">
+            <div>Zahlung</div>
+            <img src="img/1280px-PayPal_logo.png" class="inline mt-5  scale-100">
+            <img src="img/Vorkasse.png" class="inline mt-5 ml-3 scale-75">
+            <img src="img/Visa_2014_logo_detail.png" class="inline mt-5 ml-3 scale-100">
+            <img src="img/mc_hrz_thmb_282_2x.png" class="inline mt-5 ml-3 scale-100">
+        </div>
+        <div class="mt-20 ml-8">
+            <div>Social Media</div>
+            <img src="img/f_logo_RGB-Hex-Blue_512.png" class="inline mt-5 ml-3">
+            <img src="img/2000px-Instagram_logo_2016.png" class="inline mt-5 ml-3">
+            <img src="img/image_preview.png" class="inline mt-5 ml-3">
+            <img src="img/tiktok-app-icon-8.png" class="inline mt-5 ml-3">
+        </div>
+    </div>
+    <hr class="">
+    <div class="bg-neutral-800 h-16 text-neutral-400 text-center text-sm">
+        <p>Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
     </div>
 
 </main>

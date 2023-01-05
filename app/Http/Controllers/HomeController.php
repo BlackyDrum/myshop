@@ -34,7 +34,7 @@ class HomeController extends BaseController
             $successMsg = "Sie haben sich erfolgreich für unseren Newsletter angemeldet";
         }
         else {
-            $errorMsg = "Sie haben sich bereits mit dieser E-Mail registriert";
+            $errorMsg = "Sie haben sich bereits mit dieser E-Mail-Adresse registriert";
             return \redirect('/')->with('errorMsg',$errorMsg);
         }
         return \redirect('/')->with('successMsg',$successMsg);
