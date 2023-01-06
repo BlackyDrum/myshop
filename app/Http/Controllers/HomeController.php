@@ -14,11 +14,18 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends BaseController
 {
-    public function index() {
-        $errMsg = $_SESSION['errMsg'] ?? NULL;
-        $successMsg = $_SESSION['successMsg'] ?? NULL;
-        unset($_SESSION['errMsg']);
-        unset($_SESSION['successMsg']);
+    public function index(Request $request) {
+        $errMsg = NULL;
+        $successMsg = NULL;
+        if ($request->session()->has('errMsg')) {
+            $errMsg = $request->session()->get('errMsg');
+        }
+        if ($request->session()->has('successMsg')) {
+            $successMsg = $request->session()->get('successMsg');
+        }
+        session()->remove('errMsg');
+        session()->remove('successMsg');
+
         return view('home',[
             'errorMsg' => $errMsg,
             'successMsg' => $successMsg
@@ -26,11 +33,10 @@ class HomeController extends BaseController
     }
 
     public function newsletter(Request $rd) {
-        sleep(1);
         $user_mail = $rd->input('newsletter-mail');
         if (empty($user_mail) || !filter_var($user_mail,FILTER_VALIDATE_EMAIL)) {
             $errorMsg = "Es ist ein Fehler aufgetreten. Bitte geben Sie eine gültige E-Mail-Adresse ein";
-            $_SESSION['errMsg'] = $errorMsg;
+            session()->put('errMsg',$errorMsg);
             return \redirect()->action([HomeController::class,'index']);
         }
         DB::beginTransaction();
@@ -39,12 +45,12 @@ class HomeController extends BaseController
             \Newsletter::insertMailIntoDatabase($user_mail);
             DB::commit();
             $successMsg = "Sie haben sich erfolgreich für unseren Newsletter angemeldet";
-            $_SESSION['successMsg'] = $successMsg;
+            session()->put('successMsg',$successMsg);
         }
         else {
             DB::rollBack();
             $errorMsg = "Sie haben sich bereits mit dieser E-Mail-Adresse registriert";
-            $_SESSION['errMsg'] = $errorMsg;
+            session()->put('errMsg',$errorMsg);
         }
         return \redirect()->action([HomeController::class,'index']);
     }
