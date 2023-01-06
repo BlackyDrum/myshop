@@ -15,4 +15,8 @@ class AuthController extends BaseController {
     public function login() {
         return view('auth.login');
     }
+
+    public function registration() {
+        return view('auth.registration');
+    }
 }

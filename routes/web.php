@@ -18,3 +18,5 @@ Route::get('/',[\App\Http\Controllers\HomeController::class,'index']);
 Route::post('/newsletter-anmeldung',[\App\Http\Controllers\HomeController::class,'newsletter']);
 
 Route::get('/login',[\App\Http\Controllers\Auth\AuthController::class,'login']);
+
+Route::get('/registration',[\App\Http\Controllers\Auth\AuthController::class,'registration']);
