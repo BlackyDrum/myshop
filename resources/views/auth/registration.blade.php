@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <title>Login</title>
+    <title>Registrierung</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -38,7 +38,13 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="hover:text-green-500">
-                <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
+                @if(session()->get('login'))
+                    <a href="/profile"><i class="fa-solid fa-user"></i>
+                        <span class="ml-1.5">{{session()->get('name')}}</span>
+                    </a>
+                @else
+                    <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
+                @endif
             </div>
         </nav>
         <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
@@ -61,7 +67,11 @@
                     <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
                 </div>
                 <div>
-                    <a href="/login" class="font-bold">Anmelden</a>
+                    @if(session()->get('login'))
+                        <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
+                    @else
+                        <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
+                    @endif
                 </div>
                 <div>
                     <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
@@ -75,19 +85,20 @@
         <h2 class="font-bold text-2xl">Registrieren</h2><br>
         <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
             <h3 class="font-bold">Benutzerkonto erstellen</h3>
-            <form method="post" action="/verification">
+            <form method="post" action="/registration-verification">
+                @csrf
                 <select name="gender" class="mb-4 hover:border-black w-full h-10">
                     <option value="f">Frau</option>
                     <option value="m">Herr</option>
                 </select>
-                <input class="mb-4 hover:border-black w-full "  type="text" name="forename" placeholder="Vorname"><br>
-                <input type="text" class="hover:border-black w-full mb-4"  name="surname" placeholder="Nachname"><br>
-                <input type="email" class="hover:border-black w-full mb-4"  name="email" placeholder="E-Mail-Adresse"><br>
-                <input type="password" class="hover:border-black w-full mb-4"  name="email" placeholder="Passwort"><br>
+                <input class="mb-4 hover:border-black w-full "  type="text" required name="forename" placeholder="Vorname"><br>
+                <input type="text" class="hover:border-black w-full mb-4" required name="surname" placeholder="Nachname"><br>
+                <input type="email" class="hover:border-black w-full mb-4" required name="email" placeholder="E-Mail-Adresse"><br>
+                <input type="password" class="hover:border-black w-full mb-4" required name="password" placeholder="Passwort"><br>
                 <button type="submit" value="Registrieren" class="absolute pointer-event left-1/2 -translate-x-1/2 lg:mt-16 mt-28 border-2 border-black w-3/4 h-12 text-white bg-blue-900">Registrieren </button>
                 <input type="checkbox" id="check" name="checkbox" checked> <label for="check">Für unseren Newsletter anmelden</label><br>
                 @if(isset($errMsg))
-                    <p>{{$errMsg}}</p>
+                    <p class="text-red-500 font-bold">{{$errMsg}}</p>
                 @endif
             </form>
         </div>

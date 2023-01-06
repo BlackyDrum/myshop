@@ -38,7 +38,13 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="hover:text-green-500">
-                <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
+                @if(session()->get('login'))
+                    <a href="/profile"><i class="fa-solid fa-user"></i>
+                        <span class="ml-1.5">{{session()->get('name')}}</span>
+                    </a>
+                @else
+                    <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
+                @endif
             </div>
         </nav>
         <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
@@ -61,7 +67,11 @@
                     <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
                 </div>
                 <div>
-                    <a href="/login" class="font-bold">Anmelden</a>
+                    @if(session()->get('login'))
+                        <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
+                    @else
+                        <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
+                    @endif
                 </div>
                 <div>
                     <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
@@ -75,13 +85,17 @@
         <h2 class="font-bold text-2xl">Anmelden</h2><br>
         <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
             <h3 class="font-bold">Einloggen</h3>
-            <form method="post" action="/verification">
-                <input class="mb-4 hover:border-black w-full "  type="email" name="email" placeholder="E-Mail-Adresse"><br>
-                <input type="password" class="hover:border-black w-full"  name="password" placeholder="Passwort"><br>
-                <div class="absolute right-0 mr-4">
+            <form method="post" action="/login-verification">
+                @csrf
+                <input class="mb-4 hover:border-black w-full " required  type="email" name="email" placeholder="E-Mail-Adresse"><br>
+                <input type="password" class="hover:border-black w-full" required  name="password" placeholder="Passwort"><br>
+                <div class="absolute right-0 mr-4 bottom-0">
                     <a class="underline">Passwort vergessen?</a>
                 </div>
-                <button type="submit" value="Einloggen" class="absolute pointer-event left-1/2 -translate-x-1/2 mt-10 border-2 border-black w-3/4 h-12 text-white bg-blue-900">Einloggen </button>
+                <button type="submit" value="Einloggen" class="absolute pointer-event left-1/2 -translate-x-1/2 lg:mt-10 mt-12 border-2 border-black w-3/4 h-12 text-white bg-blue-900">Einloggen </button>
+                @if(isset($errMsg))
+                    <p class="text-red-500 font-bold">{{$errMsg}}</p>
+                @endif
             </form>
         </div>
 

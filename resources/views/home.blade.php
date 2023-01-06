@@ -38,8 +38,19 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="hover:text-green-500">
-                <a href="/login"><i class="fa-solid fa-user"></i></a>
+                @if(session()->get('login'))
+                <a href="/profile"><i class="fa-solid fa-user"></i>
+                    <span class="ml-1.5">{{session()->get('name')}}</span>
+                </a>
+                @else
+                    <a href="/login"><i class="fa-solid fa-user"></i></a>
+                @endif
             </div>
+                @if(session()->get('login'))
+                <div class="hover:text-green-500 right-20 absolute">
+                    <a href="sign-out"><i class="fa-solid fa-right-from-bracket"></i><span class="ml-1.5">Abmelden</span></a>
+                </div>
+                @endif
         </nav>
         <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
             <div>
@@ -53,7 +64,7 @@
             </div>
         </nav>
         <div id="navbar" class="bg-gray-400 fixed top-20 w-full transition-all lg:hidden z-20">
-            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-4  place-items-center">
+            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-5  place-items-center">
                 <div>
                     <a href="/" class="font-bold">Willkommen</a>
                 </div>
@@ -61,11 +72,21 @@
                     <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
                 </div>
                 <div>
-                    <a href="/login" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Anmelden</a>
+                    @if(session()->get('login'))
+                        <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
+                    @else
+                        <a href="/login" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Anmelden</a>
+                    @endif
                 </div>
                 <div>
                     <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
                 </div>
+                @if(session()->get('login'))
+                    <div>
+                        <a href="/sign-out" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Ausloggen</a>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>
