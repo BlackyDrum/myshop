@@ -76,8 +76,8 @@
         <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
             <h3 class="font-bold">Einloggen</h3>
             <form method="post" action="/verification">
-                <input class="mb-4 hover:border-black lg:w-full w-3/4"  type="email" name="email" placeholder="E-Mail-Adresse"><br>
-                <input type="password" class="hover:border-black lg:w-full w-3/4"  name="password" placeholder="Passwort"><br>
+                <input class="mb-4 hover:border-black w-full "  type="email" name="email" placeholder="E-Mail-Adresse"><br>
+                <input type="password" class="hover:border-black w-full"  name="password" placeholder="Passwort"><br>
                 <div class="absolute right-0 mr-4">
                     <a class="underline">Passwort vergessen?</a>
                 </div>
