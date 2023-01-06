@@ -29,7 +29,7 @@
             </div>
 
             <div class="hover:underline decoration-2 decoration-green-500 underline-offset-8 ">
-                <a href="contact">Kontakt</a>
+                <a href="/contact">Kontakt</a>
             </div>
             <div class="hover:text-green-500">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -38,7 +38,7 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="hover:text-green-500">
-                <i class="fa-solid fa-user"></i>
+                <a href="/login"><i class="fa-solid fa-user"></i></a>
             </div>
         </nav>
         <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
@@ -61,7 +61,7 @@
                     <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
                 </div>
                 <div>
-                    <a href="/mission" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Anmelden</a>
+                    <a href="/login" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Anmelden</a>
                 </div>
                 <div>
                     <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
