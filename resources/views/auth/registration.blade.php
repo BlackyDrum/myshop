@@ -81,7 +81,7 @@
     </div>
 </header>
 <main class="relative h-screen">
-    <div class="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/3">
+    <div class="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/3 mt-32">
         <h2 class="font-bold text-2xl">Registrieren</h2><br>
         <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
             <h3 class="font-bold">Benutzerkonto erstellen</h3>
@@ -112,7 +112,7 @@
     </div>
 
 </main>
-<footer>
+<footer class="pt-64">
     <div class="mt-5 bg-neutral-800 h-80 text-white flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
         <div class="mt-20">
             <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>

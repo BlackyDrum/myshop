@@ -81,7 +81,7 @@
     </div>
 </header>
 <main class="relative h-screen">
-    <div class="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/3">
+    <div class="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/3 mt-32">
         <h2 class="font-bold text-2xl">Anmelden</h2><br>
         <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
             <h3 class="font-bold">Einloggen</h3>
@@ -94,7 +94,7 @@
                 </div>
                 <button type="submit" value="Einloggen" class="absolute pointer-event left-1/2 -translate-x-1/2 lg:mt-10 mt-12 border-2 border-black w-3/4 h-12 text-white bg-blue-900">Einloggen </button>
                 @if(isset($errMsg))
-                    <p class="text-red-500 font-bold">{{$errMsg}}</p>
+                    <p class="text-red-500 font-bold text-sm">{{$errMsg}}</p>
                 @endif
             </form>
         </div>
@@ -108,7 +108,7 @@
     </div>
 
 </main>
-<footer>
+<footer class="pt-64">
     <div class="mt-5 bg-neutral-800 h-80 text-white flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
         <div class="mt-20">
             <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
