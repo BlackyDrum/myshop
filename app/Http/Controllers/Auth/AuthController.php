@@ -62,7 +62,7 @@ class AuthController extends BaseController {
             return \redirect()->action([AuthController::class,'registration']);
         }
         if (strlen($password) < 6) {
-            $errMsg = "Bitte geben Sie mindestens 6 Zeichen für Ihr Passwort ein";
+            $errMsg = "Mind. 6 Zeichen für das Passwort";
             session()->put('errMsg',$errMsg);
             return \redirect()->action([AuthController::class,'registration']);
         }

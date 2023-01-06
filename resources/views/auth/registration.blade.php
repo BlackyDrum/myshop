@@ -80,7 +80,7 @@
         </div>
     </div>
 </header>
-<main class="relative h-screen flex justify-center align-items-center">
+<main class="relative h-screen flex justify-center align-items-center flex-grow-0">
     <div class="my-auto">
         <h2 class="font-bold text-2xl">Registrieren</h2><br>
         <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
