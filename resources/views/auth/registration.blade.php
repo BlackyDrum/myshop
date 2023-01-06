@@ -80,8 +80,8 @@
         </div>
     </div>
 </header>
-<main class="relative h-screen">
-    <div class="absolute left-1/2 top-1/4 -translate-x-1/2 -translate-y-1/3 mt-32">
+<main class="relative h-screen flex justify-center align-items-center">
+    <div class="my-auto">
         <h2 class="font-bold text-2xl">Registrieren</h2><br>
         <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
             <h3 class="font-bold">Benutzerkonto erstellen</h3>
@@ -95,7 +95,7 @@
                 <input type="text" class="hover:border-black w-full mb-4" required name="surname" placeholder="Nachname"><br>
                 <input type="email" class="hover:border-black w-full mb-4" required name="email" placeholder="E-Mail-Adresse"><br>
                 <input type="password" class="hover:border-black w-full mb-4" required name="password" placeholder="Passwort"><br>
-                <button type="submit" value="Registrieren" class="absolute pointer-event left-1/2 -translate-x-1/2 lg:mt-16 mt-28 border-2 border-black w-3/4 h-12 text-white bg-blue-900">Registrieren </button>
+                <button type="submit" value="Registrieren" class="absolute pointer-event left-1/2 -translate-x-1/2 mt-16 border-2 border-black w-3/4 h-12 text-white bg-blue-900">Registrieren </button>
                 <input type="checkbox" id="check" name="checkbox" checked> <label for="check">Für unseren Newsletter anmelden</label><br>
                 @if(isset($errMsg))
                     <p class="text-red-500 font-bold text-sm">{{$errMsg}}</p>
