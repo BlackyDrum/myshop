@@ -107,7 +107,7 @@
     </div>
 
     <div class="mt-10 flex flex-wrap flex-1 gap-10 justify-evenly">
-        <a href="/products/gekochte-wassermelonenkerne">
+        <a href="/products/denim-male-gefuetterte-stiefel-black">
         <div class="card w-96">
             <img src="img/denim-male-gefuetterte-stiefel-black.png" class="w-full" alt="denim-male-gefuetterte-stiefel-black">
             <div class="container">
@@ -117,7 +117,7 @@
             </div>
         </div>
         </a>
-        <a href="/products/geroestete-kuerbiskerne">
+        <a href="/products/denim-male-gefuetterte-stiefel-brown">
         <div class="card w-96">
             <img src="img/denim-male-gefuetterte-stiefel-brown.png" class="w-full" alt="denim-male-gefuetterte-stiefel-brown">
             <div class="container">
@@ -127,7 +127,7 @@
             </div>
         </div>
         </a>
-        <a href="/products/geroestete-sonnenblumenkerne">
+        <a href="/products/rekking-stiefel-green">
         <div class="card w-96">
             <img src="img/trekking-stiefel-green.png" class="w-full" alt="trekking-stiefel-green">
             <div class="container">
@@ -137,7 +137,7 @@
             </div>
         </div>
         </a>
-        <a href="/products/geroestete-wassermelonenkerne">
+        <a href="/products/sneaker-mit-applikationen-black">
         <div class="card w-96">
             <img src="img/sneaker-mit-applikationen-black.png" class="w-full" alt="sneaker-mit-applikationen-black">
             <div class="container ">

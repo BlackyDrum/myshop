@@ -15,16 +15,8 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends BaseController
 {
     public function index(Request $request) {
-        $errMsg = NULL;
-        $successMsg = NULL;
-        if ($request->session()->has('errMsg')) {
-            $errMsg = $request->session()->get('errMsg');
-        }
-        if ($request->session()->has('successMsg')) {
-            $successMsg = $request->session()->get('successMsg');
-        }
-        session()->remove('errMsg');
-        session()->remove('successMsg');
+        $errMsg = $request->session()->pull('errMsg') ?? NULL;
+        $successMsg = $request->session()->pull('successMsg') ?? NULL;
 
         return view('home',[
             'errorMsg' => $errMsg,
