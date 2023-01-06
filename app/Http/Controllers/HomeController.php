@@ -26,6 +26,7 @@ class HomeController extends BaseController
     }
 
     public function newsletter(Request $rd) {
+        sleep(1);
         $user_mail = $rd->input('newsletter-mail');
         if (empty($user_mail) || !filter_var($user_mail,FILTER_VALIDATE_EMAIL)) {
             $errorMsg = "Es ist ein Fehler aufgetreten. Bitte geben Sie eine gültige E-Mail-Adresse ein";

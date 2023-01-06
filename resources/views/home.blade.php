@@ -220,7 +220,7 @@
                     <input type="submit" value="Kostenlos abonnieren" name="submit" class="border-2 text-gray-800 border-solid border-gray-500 p-1 w-72 bg-white rounded-sm cursor-pointer">
                 </div>
             </form>
-            <form class="grid grid-cols-1 grid-rows-2 place-items-center lg:hidden gap-2" method="post" action="/newsletter-anmeldung">
+            <form class=" grid grid-cols-1 grid-rows-2 place-items-center lg:hidden gap-2" method="post" action="/newsletter-anmeldung">
                 <div>
                     <input type="email" name="newsletter-mail" class="rounded-lg" size="40" placeholder="Ihre E-Mail-Adresse">
                 </div>
