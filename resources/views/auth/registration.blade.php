@@ -98,7 +98,7 @@
                 <button type="submit" value="Registrieren" class="absolute pointer-event left-1/2 -translate-x-1/2 lg:mt-16 mt-28 border-2 border-black w-3/4 h-12 text-white bg-blue-900">Registrieren </button>
                 <input type="checkbox" id="check" name="checkbox" checked> <label for="check">Für unseren Newsletter anmelden</label><br>
                 @if(isset($errMsg))
-                    <p class="text-red-500 font-bold">{{$errMsg}}</p>
+                    <p class="text-red-500 font-bold text-sm">{{$errMsg}}</p>
                 @endif
             </form>
         </div>
