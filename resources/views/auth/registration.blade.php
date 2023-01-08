@@ -58,7 +58,7 @@
                 <button id="nav" onclick="navbar()"><i class="fa-solid fa-bars scale-125"></i></button>
             </div>
         </nav>
-        <div id="navbar" class="bg-gray-400 absolute top-20 w-full transition-all lg:hidden z-20">
+        <div id="navbar" class="bg-gray-400 fixed top-20 w-full transition-all lg:hidden z-20">
             <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-4  place-items-center">
                 <div>
                     <a href="/" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Willkommen</a>
