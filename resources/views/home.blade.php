@@ -11,7 +11,6 @@
     <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
     <script src="js/config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-
     @vite('resources/css/app.css')
 </head>
 <body onload="init()" class="bg-gray-200 font-mono">
@@ -38,35 +37,20 @@
             <div class="hover:text-green-500">
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
-            <div class="hover:text-green-500 relative">
+            <div class="hover:text-green-500">
                 @if(session()->get('login'))
-                <a href="/profile"><i class="fa-solid fa-user"></i>
-                    <span class="ml-1.5">{{session()->get('name')}}</span>
-                </a>
+                    <a href="/profile"><i class="fa-solid fa-user"></i>
+                        <span class="ml-1.5">{{session()->get('name')}}</span>
+                    </a>
                 @else
-                    <a id="user-menu-parent" onclick="userMenu()"><i  class="fa-solid fa-user user-parent"></i></a>
-                    <div id="user-menu" class="absolute bg-gray-400 z-10 right-1/2 mt-5 user-menu" style="height: 15rem;width: 20rem; visibility: hidden">
-                        <div class="m-5">
-                            <h1 class="text-blue-900 text-3xl font-bold">Kundenkonto</h1>
-                        </div>
-                        <div class="m-5">
-                            <p class="text-blue-900 text-xl">Du bist nicht eingeloggt</p>
-                        </div>
-                        <div class="m-5 text-center">
-                            <button onclick="location.href='/login'" value="Einloggen" class="pointer-event w-full  border-2 border-black h-12 text-white bg-blue-900">Einloggen </button>
-                        </div>
-                        <div class="m-5">
-                            <a href="/registration" class="text-blue-900 text-lg underline">Registrieren</a>
-                        </div>
-                    </div>
+                    <a href="/login"><i class="fa-solid fa-user"></i></a>
                 @endif
             </div>
-                @if(session()->get('login'))
+            @if(session()->get('login'))
                 <div class="hover:text-green-500 right-20 absolute">
                     <a href="sign-out"><i class="fa-solid fa-right-from-bracket"></i><span class="ml-1.5">Abmelden</span></a>
                 </div>
-
-                @endif
+            @endif
         </nav>
         <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
             <div>
@@ -79,8 +63,8 @@
                 <button id="nav" onclick="navbar()"><i class="fa-solid fa-bars scale-125"></i></button>
             </div>
         </nav>
-        <div id="navbar" class="bg-gray-400 fixed top-20 w-full transition-all lg:hidden z-20">
-            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-5  place-items-center">
+        <div id="navbar" class="bg-gray-400 absolute top-20 w-full transition-all lg:hidden z-20">
+            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-5 place-items-center">
                 <div>
                     <a href="/" class="font-bold">Willkommen</a>
                 </div>
@@ -145,44 +129,44 @@
 
     <div class="mt-10 flex flex-wrap flex-1 gap-10 justify-evenly">
         <a href="/products/denim-male-gefuetterte-stiefel-black">
-        <div class="card w-96">
-            <img src="img/denim-male-gefuetterte-stiefel-black.png" class="w-full" alt="denim-male-gefuetterte-stiefel-black">
-            <div class="container">
-                <p class="mb-2 text-sm">Denim Male</p>
-                <h4 class="text-lg mb-2"><b>Gefütterte Stiefel</b></h4>
-                <p class="text-lg ">79.95€</p>
+            <div class="card w-96">
+                <img src="img/denim-male-gefuetterte-stiefel-black.png" class="w-full" alt="denim-male-gefuetterte-stiefel-black">
+                <div class="container">
+                    <p class="mb-2 text-sm">Denim Male</p>
+                    <h4 class="text-lg mb-2"><b>Gefütterte Stiefel</b></h4>
+                    <p class="text-lg ">79.95€</p>
+                </div>
             </div>
-        </div>
         </a>
         <a href="/products/denim-male-gefuetterte-stiefel-brown">
-        <div class="card w-96">
-            <img src="img/denim-male-gefuetterte-stiefel-brown.png" class="w-full" alt="denim-male-gefuetterte-stiefel-brown">
-            <div class="container">
-                <p class="mb-2 text-sm">Denim Male</p>
-                <h4 class="text-lg mb-2"><b>Gefütterte Stiefel</b></h4>
-                <p class="text-lg ">79.95€</p>
+            <div class="card w-96">
+                <img src="img/denim-male-gefuetterte-stiefel-brown.png" class="w-full" alt="denim-male-gefuetterte-stiefel-brown">
+                <div class="container">
+                    <p class="mb-2 text-sm">Denim Male</p>
+                    <h4 class="text-lg mb-2"><b>Gefütterte Stiefel</b></h4>
+                    <p class="text-lg ">79.95€</p>
+                </div>
             </div>
-        </div>
         </a>
         <a href="/products/rekking-stiefel-green">
-        <div class="card w-96">
-            <img src="img/trekking-stiefel-green.png" class="w-full" alt="trekking-stiefel-green">
-            <div class="container">
-                <p class="mb-2 text-sm">Denim Male</p>
-                <h4 class="text-lg mb-2"><b>Trekking Stiefel</b></h4>
-                <p class="text-lg "><span class="text-orange-700">62,99€</span> <span class="line-through">79,95€</span></p>
+            <div class="card w-96">
+                <img src="img/trekking-stiefel-green.png" class="w-full" alt="trekking-stiefel-green">
+                <div class="container">
+                    <p class="mb-2 text-sm">Denim Male</p>
+                    <h4 class="text-lg mb-2"><b>Trekking Stiefel</b></h4>
+                    <p class="text-lg "><span class="text-orange-700">62,99€</span> <span class="line-through">79,95€</span></p>
+                </div>
             </div>
-        </div>
         </a>
         <a href="/products/sneaker-mit-applikationen-black">
-        <div class="card w-96">
-            <img src="img/sneaker-mit-applikationen-black.png" class="w-full" alt="sneaker-mit-applikationen-black">
-            <div class="container ">
-                <p class="mb-2 text-sm">Denim Male</p>
-                <h4 class="text-lg mb-2"><b>Sneaker mit Applikationen</b></h4>
-                <p class="text-lg ">69.95€</p>
+            <div class="card w-96">
+                <img src="img/sneaker-mit-applikationen-black.png" class="w-full" alt="sneaker-mit-applikationen-black">
+                <div class="container ">
+                    <p class="mb-2 text-sm">Denim Male</p>
+                    <h4 class="text-lg mb-2"><b>Sneaker mit Applikationen</b></h4>
+                    <p class="text-lg ">69.95€</p>
+                </div>
             </div>
-        </div>
         </a>
     </div>
 
@@ -268,131 +252,131 @@
         </div>
     </div>
     <footer>
-    <div class="mt-5 bg-neutral-800 h-80 text-white flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
-        <div class="mt-20">
-            <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
-            <div>Tel.: 02402 127398</div><br>
-            <h4>Öffungszeiten</h4>
-            <div>Mo - Fr: 10-15 Uhr</div>
-        </div>
-        <div class="mt-20">
-            <h4 class="text-neutral-400">Kundenservice</h4><br>
-            <div>Versand</div>
-            <div>Widerruf</div>
-            <div>Kontakt</div>
-            <div>FAQ</div>
-            <div>Großhandel/Einzelhandel</div>
-        </div>
-        <div class="mt-20">
-            <h4 class="text-neutral-400">Aytan</h4><br>
-            <div>Mission</div>
-            <div>Geschichte</div>
-            <div>Produktionsprozess</div>
-            <div>Jobs</div>
-            <div>Kooperationen</div>
-        </div>
-        <div class="mt-20">
-            <h4 class="text-neutral-400">Rechtliches</h4><br>
-            <div>Impressum</div>
-            <div>AGB</div>
-            <div>Datenschutz</div>
-        </div>
-        <div class="mt-20">
-            <h4 class="text-neutral-400">Aytan International</h4><br>
-            <ul class="list-disc">
-                <li>Deutschland</li>
-                <li>Schweden</li>
-                <li>Europa</li>
-            </ul>
-        </div>
-    </div>
-    <div class="lg:hidden mt-5 bg-neutral-800 h-224 text-white"><br>
-        <div class="ml-8">
-            <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
-            <div>Tel.: 02402 127398</div><br>
-            <h4>Öffungszeiten</h4>
-            <div>Mo - Fr: 10-15 Uhr</div>
-        </div><br>
-        <div class="ml-8">
-            <h4 class="text-neutral-400">Kundenservice</h4><br>
-            <div>Versand</div>
-            <div>Widerruf</div>
-            <div>Kontakt</div>
-            <div>FAQ</div>
-            <div>Großhandel/Einzelhandel</div>
-        </div><br>
-        <div class="ml-8">
-            <h4 class="text-neutral-400">Aytan</h4><br>
-            <div>Mission</div>
-            <div>Geschichte</div>
-            <div>Produktionsprozess</div>
-            <div>Jobs</div>
-            <div>Kooperationen</div>
-        </div><br>
-        <div class="ml-8">
-            <h4 class="text-neutral-400">Rechtliches</h4><br>
-            <div>Impressum</div>
-            <div>AGB</div>
-            <div>Datenschutz</div>
-        </div><br>
-        <div class="ml-8">
-            <h4 class="text-neutral-400">Aytan International</h4><br>
-            <ul class="list-disc">
-                <li>Deutschland</li>
-                <li>Schweden</li>
-                <li>Europa</li>
-            </ul>
-        </div>
-    </div>
-    <hr>
-    <div class="bg-neutral-800 h-60 text-neutral-400 flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
-        <div class="mt-20">
-            <div>Versand</div>
-            <div class="mt-5">
-                <img src="img/2000px-DHL_Logo.png">
+        <div class="mt-5 bg-neutral-800 h-80 text-white flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
+            <div class="mt-20">
+                <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
+                <div>Tel.: 02402 127398</div><br>
+                <h4>Öffungszeiten</h4>
+                <div>Mo - Fr: 10-15 Uhr</div>
+            </div>
+            <div class="mt-20">
+                <h4 class="text-neutral-400">Kundenservice</h4><br>
+                <div>Versand</div>
+                <div>Widerruf</div>
+                <div>Kontakt</div>
+                <div>FAQ</div>
+                <div>Großhandel/Einzelhandel</div>
+            </div>
+            <div class="mt-20">
+                <h4 class="text-neutral-400">Aytan</h4><br>
+                <div>Mission</div>
+                <div>Geschichte</div>
+                <div>Produktionsprozess</div>
+                <div>Jobs</div>
+                <div>Kooperationen</div>
+            </div>
+            <div class="mt-20">
+                <h4 class="text-neutral-400">Rechtliches</h4><br>
+                <div>Impressum</div>
+                <div>AGB</div>
+                <div>Datenschutz</div>
+            </div>
+            <div class="mt-20">
+                <h4 class="text-neutral-400">Aytan International</h4><br>
+                <ul class="list-disc">
+                    <li>Deutschland</li>
+                    <li>Schweden</li>
+                    <li>Europa</li>
+                </ul>
             </div>
         </div>
-        <div class="mt-20">
-            <div>Zahlung</div>
-            <img src="img/1280px-PayPal_logo.png" class="inline mt-5  scale-100">
-            <img src="img/Vorkasse.png" class="inline mt-5 ml-3 scale-75">
-            <img src="img/Visa_2014_logo_detail.png" class="inline mt-5 ml-3 scale-100">
-            <img src="img/mc_hrz_thmb_282_2x.png" class="inline mt-5 ml-3 scale-100">
-        </div>
-        <div class="mt-20">
-            <div>Social Media</div>
-            <img src="img/f_logo_RGB-Hex-Blue_512.png" class="inline mt-5 ml-3">
-            <img src="img/2000px-Instagram_logo_2016.png" class="inline mt-5 ml-3">
-            <img src="img/image_preview.png" class="inline mt-5 ml-3">
-            <img src="img/tiktok-app-icon-8.png" class="inline mt-5 ml-3">
-        </div>
-    </div>
-    <div class="bg-neutral-800 h-96 text-neutral-400 lg:hidden">
-        <div class="ml-8"><br>
-            <div>Versand</div>
-            <div class="mt-5">
-                <img src="img/2000px-DHL_Logo.png">
+        <div class="lg:hidden mt-5 bg-neutral-800 h-224 text-white"><br>
+            <div class="ml-8">
+                <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
+                <div>Tel.: 02402 127398</div><br>
+                <h4>Öffungszeiten</h4>
+                <div>Mo - Fr: 10-15 Uhr</div>
+            </div><br>
+            <div class="ml-8">
+                <h4 class="text-neutral-400">Kundenservice</h4><br>
+                <div>Versand</div>
+                <div>Widerruf</div>
+                <div>Kontakt</div>
+                <div>FAQ</div>
+                <div>Großhandel/Einzelhandel</div>
+            </div><br>
+            <div class="ml-8">
+                <h4 class="text-neutral-400">Aytan</h4><br>
+                <div>Mission</div>
+                <div>Geschichte</div>
+                <div>Produktionsprozess</div>
+                <div>Jobs</div>
+                <div>Kooperationen</div>
+            </div><br>
+            <div class="ml-8">
+                <h4 class="text-neutral-400">Rechtliches</h4><br>
+                <div>Impressum</div>
+                <div>AGB</div>
+                <div>Datenschutz</div>
+            </div><br>
+            <div class="ml-8">
+                <h4 class="text-neutral-400">Aytan International</h4><br>
+                <ul class="list-disc">
+                    <li>Deutschland</li>
+                    <li>Schweden</li>
+                    <li>Europa</li>
+                </ul>
             </div>
         </div>
-        <div class="mt-20 ml-8">
-            <div>Zahlung</div>
-            <img src="img/1280px-PayPal_logo.png" class="inline mt-5  scale-100">
-            <img src="img/Vorkasse.png" class="inline mt-5 ml-3 scale-75">
-            <img src="img/Visa_2014_logo_detail.png" class="inline mt-5 ml-3 scale-100">
-            <img src="img/mc_hrz_thmb_282_2x.png" class="inline mt-5 ml-3 scale-100">
+        <hr>
+        <div class="bg-neutral-800 h-60 text-neutral-400 flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
+            <div class="mt-20">
+                <div>Versand</div>
+                <div class="mt-5">
+                    <img src="img/2000px-DHL_Logo.png">
+                </div>
+            </div>
+            <div class="mt-20">
+                <div>Zahlung</div>
+                <img src="img/1280px-PayPal_logo.png" class="inline mt-5  scale-100">
+                <img src="img/Vorkasse.png" class="inline mt-5 ml-3 scale-75">
+                <img src="img/Visa_2014_logo_detail.png" class="inline mt-5 ml-3 scale-100">
+                <img src="img/mc_hrz_thmb_282_2x.png" class="inline mt-5 ml-3 scale-100">
+            </div>
+            <div class="mt-20">
+                <div>Social Media</div>
+                <img src="img/f_logo_RGB-Hex-Blue_512.png" class="inline mt-5 ml-3">
+                <img src="img/2000px-Instagram_logo_2016.png" class="inline mt-5 ml-3">
+                <img src="img/image_preview.png" class="inline mt-5 ml-3">
+                <img src="img/tiktok-app-icon-8.png" class="inline mt-5 ml-3">
+            </div>
         </div>
-        <div class="mt-20 ml-8">
-            <div>Social Media</div>
-            <img src="img/f_logo_RGB-Hex-Blue_512.png" class="inline mt-5 ml-3">
-            <img src="img/2000px-Instagram_logo_2016.png" class="inline mt-5 ml-3">
-            <img src="img/image_preview.png" class="inline mt-5 ml-3">
-            <img src="img/tiktok-app-icon-8.png" class="inline mt-5 ml-3">
+        <div class="bg-neutral-800 h-96 text-neutral-400 lg:hidden">
+            <div class="ml-8"><br>
+                <div>Versand</div>
+                <div class="mt-5">
+                    <img src="img/2000px-DHL_Logo.png">
+                </div>
+            </div>
+            <div class="mt-20 ml-8">
+                <div>Zahlung</div>
+                <img src="img/1280px-PayPal_logo.png" class="inline mt-5  scale-100">
+                <img src="img/Vorkasse.png" class="inline mt-5 ml-3 scale-75">
+                <img src="img/Visa_2014_logo_detail.png" class="inline mt-5 ml-3 scale-100">
+                <img src="img/mc_hrz_thmb_282_2x.png" class="inline mt-5 ml-3 scale-100">
+            </div>
+            <div class="mt-20 ml-8">
+                <div>Social Media</div>
+                <img src="img/f_logo_RGB-Hex-Blue_512.png" class="inline mt-5 ml-3">
+                <img src="img/2000px-Instagram_logo_2016.png" class="inline mt-5 ml-3">
+                <img src="img/image_preview.png" class="inline mt-5 ml-3">
+                <img src="img/tiktok-app-icon-8.png" class="inline mt-5 ml-3">
+            </div>
         </div>
-    </div>
 
-    <div class="bg-neutral-800 h-16 text-neutral-400 text-center text-sm max-lg:hidden">
-        <p class="">Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
-    </div>
+        <div class="bg-neutral-800 h-16 text-neutral-400 text-center text-sm max-lg:hidden">
+            <p class="">Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
+        </div>
         <div class="bg-neutral-800 h-32 text-neutral-400 text-center text-sm lg:hidden pt-20">
             <p class="">Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
         </div>
