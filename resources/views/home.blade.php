@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
     <link rel="stylesheet" href="css/home.css" />
     <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
-    <script type="text/javascript" src="js/config.js"></script>
+    <script src="js/config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     @vite('resources/css/app.css')
