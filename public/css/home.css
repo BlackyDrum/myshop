@@ -1,13 +1,7 @@
 #navitems {
     visibility: hidden;
 }
-.user-parent:not(:hover) + .user-menu {
-    visibility: hidden;
-}
 
-#user-menu:hover {
-    visibility: visible;
-}
 
 .card {
     /* Add shadows to create the "card" effect */

@@ -44,8 +44,8 @@
                     <span class="ml-1.5">{{session()->get('name')}}</span>
                 </a>
                 @else
-                    <a class="user-parent" href="/login"><i  class="fa-solid fa-user user-parent"></i></a>
-                    <div id="user-menu" class="absolute bg-gray-300 z-10 right-1/2 transition-all mt-5 user-menu" style="height: 15rem;width: 20rem;">
+                    <a id="user-menu-parent" onclick="userMenu()"><i  class="fa-solid fa-user user-parent"></i></a>
+                    <div id="user-menu" class="absolute bg-gray-400 z-10 right-1/2 mt-5 user-menu" style="height: 15rem;width: 20rem; visibility: hidden">
                         <div class="m-5">
                             <h1 class="text-blue-900 text-3xl font-bold">Kundenkonto</h1>
                         </div>

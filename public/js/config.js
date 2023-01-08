@@ -14,6 +14,18 @@ function init() {
     currentSlide(1);
 }
 
+function userMenu() {
+    if (document.getElementById('user-menu').style.visibility === "hidden") {
+        document.getElementById('user-menu').style.visibility = "visible";
+
+        document.getElementById('user-menu-parent').innerHTML = "<i class=\"fa-solid fa-xmark scale-150\"></i>";
+    }
+    else {
+        document.getElementById('user-menu').style.visibility = "hidden";
+
+        document.getElementById('user-menu-parent').innerHTML = "<i class=\"fa-solid fa-user\"></i>";
+    }
+}
 
 function hideCookieDialog() {
     const dialogs = document.getElementsByClassName('js-cookie-consent');
