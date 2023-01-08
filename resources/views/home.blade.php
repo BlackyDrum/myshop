@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
     <link rel="stylesheet" href="css/home.css" />
     <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
-    <script src="js/config.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+
     @vite('resources/css/app.css')
 </head>
 <body onload="init()" class="bg-gray-200 font-mono">
@@ -37,19 +38,34 @@
             <div class="hover:text-green-500">
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
-            <div class="hover:text-green-500">
+            <div class="hover:text-green-500 relative">
                 @if(session()->get('login'))
                 <a href="/profile"><i class="fa-solid fa-user"></i>
                     <span class="ml-1.5">{{session()->get('name')}}</span>
                 </a>
                 @else
-                    <a href="/login"><i class="fa-solid fa-user"></i></a>
+                    <a class="user-parent" href="/login"><i  class="fa-solid fa-user user-parent"></i></a>
+                    <div id="user-menu" class="absolute bg-gray-300 z-10 right-1/2 transition-all mt-5 user-menu" style="height: 15rem;width: 20rem;">
+                        <div class="m-5">
+                            <h1 class="text-blue-900 text-3xl font-bold">Kundenkonto</h1>
+                        </div>
+                        <div class="m-5">
+                            <p class="text-blue-900 text-xl">Du bist nicht eingeloggt</p>
+                        </div>
+                        <div class="m-5 text-center">
+                            <button onclick="location.href='/login'" value="Einloggen" class="pointer-event w-full  border-2 border-black h-12 text-white bg-blue-900">Einloggen </button>
+                        </div>
+                        <div class="m-5">
+                            <a href="/registration" class="text-blue-900 text-lg underline">Registrieren</a>
+                        </div>
+                    </div>
                 @endif
             </div>
                 @if(session()->get('login'))
                 <div class="hover:text-green-500 right-20 absolute">
                     <a href="sign-out"><i class="fa-solid fa-right-from-bracket"></i><span class="ml-1.5">Abmelden</span></a>
                 </div>
+
                 @endif
         </nav>
         <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">

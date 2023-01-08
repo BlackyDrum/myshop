@@ -44,6 +44,7 @@
                     </a>
                 @else
                     <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
+
                 @endif
             </div>
         </nav>

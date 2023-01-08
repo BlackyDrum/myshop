@@ -11,9 +11,9 @@ function navbar() {
 }
 function init() {
     document.getElementById('navbar').style.height = "0";
-    document.getElementById('navitems').style.visibility = "hidden";
     currentSlide(1);
 }
+
 
 function hideCookieDialog() {
     const dialogs = document.getElementsByClassName('js-cookie-consent');
