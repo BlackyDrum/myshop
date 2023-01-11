@@ -1,16 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/../app/Models/Newsletter.php');
-
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\DB;
+use App\Models\Newsletter;
 
 class HomeController extends BaseController
 {
@@ -31,18 +25,16 @@ class HomeController extends BaseController
             session()->put('errMsg',$errorMsg);
             return \redirect()->action([HomeController::class,'index']);
         }
-        DB::beginTransaction();
-        $isNotInDatabase = \Newsletter::checkIfEmailIsInDatabase($user_mail);
-        if ($isNotInDatabase) {
-            \Newsletter::insertMailIntoDatabase($user_mail);
-            DB::commit();
-            $successMsg = "Sie haben sich erfolgreich für unseren Newsletter angemeldet";
-            session()->put('successMsg',$successMsg);
-        }
-        else {
-            DB::rollBack();
+        try {
+            Newsletter::query()->where('email',$user_mail)->firstOrFail();
             $errorMsg = "Sie haben sich bereits mit dieser E-Mail-Adresse registriert";
             session()->put('errMsg',$errorMsg);
+        }catch (ModelNotFoundException $exception) {
+            $newsletter = new Newsletter();
+            $newsletter->email = $user_mail;
+            $newsletter->save();
+            $successMsg = "Sie haben sich erfolgreich für unseren Newsletter angemeldet";
+            session()->put('successMsg',$successMsg);
         }
         return \redirect()->action([HomeController::class,'index']);
     }

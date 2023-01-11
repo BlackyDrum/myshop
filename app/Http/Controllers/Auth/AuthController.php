@@ -1,21 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
-require_once($_SERVER['DOCUMENT_ROOT'].'/../app/Models/Auth.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/../app/Models/Newsletter.php');
+use App\Models\Auth;
+use App\Models\Newsletter;
 
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\DB;
+
 
 class AuthController extends BaseController {
     public function login() {
@@ -67,20 +61,30 @@ class AuthController extends BaseController {
             return \redirect()->action([AuthController::class,'registration']);
         }
 
-        $isNotInDatabase = \Auth::checkIfEmailIsInDatabase($email);
 
-        if (!$isNotInDatabase) {
+        $result = Auth::query()->where('email',$email)->first();
+
+        if (!empty($result)) {
             $errMsg = "Die E-Mail ist bereits bei uns registriert";
             session()->put('errMsg',$errMsg);
             return \redirect()->action([AuthController::class,'registration']);
         }
 
+
         $passwort_hashed = password_hash($password,PASSWORD_DEFAULT);
 
+        $user = new Auth();
+        $user->gender = $gender;
+        $user->forename = $forename;
+        $user->surname = $surname;
+        $user->email = $email;
+        $user->password = $passwort_hashed;
+        $user->save();
 
-        \Auth::insertUserIntoDatabase($gender,$forename,$surname,$email,$passwort_hashed);
         if (!empty($checkbox)) {
-            \Newsletter::insertMailIntoDatabase($email);
+            $newsletter = new Newsletter();
+            $newsletter->email = $email;
+            $newsletter->save();
         }
         return \redirect()->action([AuthController::class,'login']);
 
@@ -89,12 +93,13 @@ class AuthController extends BaseController {
         $email = $rd->input('email');
         $password = $rd->input('password');
 
-        if (!filter_var($email,FILTER_VALIDATE_EMAIL) || \Auth::checkIfEmailIsInDatabase($email)) {
+        if (!filter_var($email,FILTER_VALIDATE_EMAIL) || empty(Auth::query()->where("email",$email)->first())) {
             $errMsg = "E-Mail-Adresse oder Passwort falsch";
             session()->put('errMsg',$errMsg);
             return \redirect()->action([AuthController::class,'login']);
         }
-        $user_data = (\Auth::getUserData($email))[0];
+
+        $user_data = Auth::query()->where("email",$email)->first();
         if (!password_verify($password,$user_data->password)) {
             $errMsg = "E-Mail-Adresse oder Passwort falsch";
             session()->put('errMsg',$errMsg);
