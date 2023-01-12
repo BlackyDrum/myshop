@@ -9,4 +9,8 @@ class Newsletter extends Model {
     protected $primaryKey = "id";
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'email'
+    ];
 }

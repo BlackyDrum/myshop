@@ -82,9 +82,9 @@ class AuthController extends BaseController {
         $user->save();
 
         if (!empty($checkbox)) {
-            $newsletter = new Newsletter();
-            $newsletter->email = $email;
-            $newsletter->save();
+            Newsletter::query()->where('email',$email)->firstOrCreate([
+                'email' => $email
+            ]);
         }
         return \redirect()->action([AuthController::class,'login']);
 
