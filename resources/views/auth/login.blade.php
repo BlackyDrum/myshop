@@ -43,47 +43,41 @@
                         <span class="ml-1.5">{{\Illuminate\Support\Facades\Auth::getUser()->forename}}</span>
                     </a>
                 @else
-                    <a href="/login"><i class="fa-solid fa-user"></i></a>
+                    <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
                 @endif
             </div>
-            @if(\Illuminate\Support\Facades\Auth::user())
-                <div class="hover:text-green-500 right-20 absolute">
-                    <a href="sign-out"><i class="fa-solid fa-right-from-bracket"></i><span class="ml-1.5">Abmelden</span></a>
+        </nav>
+        <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
+            <div>
+                <i class="fa-solid fa-magnifying-glass scale-125"></i>
+            </div>
+            <div>
+                <i class="fa-solid fa-cart-shopping scale-125"></i>
+            </div>
+            <div>
+                <button id="nav" onclick="navbar()"><i class="fa-solid fa-bars scale-125"></i></button>
+            </div>
+        </nav>
+        <div id="navbar" class="bg-gray-400 absolute top-20 w-full transition-all lg:hidden z-20">
+            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-4  place-items-center">
+                <div>
+                    <a href="/" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Willkommen</a>
                 </div>
-        @endif
-    </div>
-    </nav>
-    <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
-        <div>
-            <i class="fa-solid fa-magnifying-glass scale-125"></i>
-        </div>
-        <div>
-            <i class="fa-solid fa-cart-shopping scale-125"></i>
-        </div>
-        <div>
-            <button id="nav" onclick="navbar()"><i class="fa-solid fa-bars scale-125"></i></button>
-        </div>
-    </nav>
-    <div id="navbar" class="bg-gray-400 absolute top-20 w-full transition-all lg:hidden z-20">
-        <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-4  place-items-center">
-            <div>
-                <a href="/" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Willkommen</a>
-            </div>
-            <div>
-                <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
-            </div>
-            <div>
-                @if(\Illuminate\Support\Facades\Auth::user())
-                    <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
-                @else
-                    <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
-                @endif
-            </div>
-            <div>
-                <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
+                <div>
+                    <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
+                </div>
+                <div>
+                    @if(\Illuminate\Support\Facades\Auth::user())
+                        <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
+                    @else
+                        <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
+                    @endif
+                </div>
+                <div>
+                    <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </header>
 <main class="relative h-screen flex justify-center align-items-center">

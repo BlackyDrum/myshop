@@ -38,9 +38,9 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="hover:text-green-500">
-                @if(session()->get('login'))
+                @if(\Illuminate\Support\Facades\Auth::user())
                     <a href="/profile"><i class="fa-solid fa-user"></i>
-                        <span class="ml-1.5">{{session()->get('name')}}</span>
+                        <span class="ml-1.5">{{\Illuminate\Support\Facades\Auth::getUser()->forename}}</span>
                     </a>
                 @else
                     <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
@@ -67,7 +67,7 @@
                     <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
                 </div>
                 <div>
-                    @if(session()->get('login'))
+                    @if(\Illuminate\Support\Facades\Auth::user())
                         <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
                     @else
                         <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
