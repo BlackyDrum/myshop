@@ -45,7 +45,13 @@
                 @else
                     <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
                 @endif
+
             </div>
+            @if(\Illuminate\Support\Facades\Auth::user())
+                <div class="hover:text-green-500 right-20 absolute">
+                    <a href="sign-out"><i class="fa-solid fa-right-from-bracket"></i><span class="ml-1.5">Abmelden</span></a>
+                </div>
+            @endif
         </nav>
         <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
             <div>

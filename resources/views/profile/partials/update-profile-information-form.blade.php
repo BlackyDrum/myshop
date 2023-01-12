@@ -54,7 +54,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Gespeichert') }}</x-primary-button>
+            <x-primary-button>{{ __('Speichern') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
