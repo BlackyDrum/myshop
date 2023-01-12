@@ -10,6 +10,12 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/1f2fd08344.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
+        <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        @vite('resources/css/app.css')
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
