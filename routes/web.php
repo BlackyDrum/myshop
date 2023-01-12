@@ -32,7 +32,7 @@ Route::post('/login-verification',[\App\Http\Controllers\Auth\AuthController::cl
 */
 //Route::get('/profile',[\App\Http\Controllers\ProfileController::class,'showProfile'])->middleware(['verified'])->name('profile');
 
-Route::get('/sign-out',[\App\Http\Controllers\Auth\AuthController::class,'sign_out']);
+Route::get('/sign-out',[\App\Http\Controllers\Auth\AuthenticatedSessionController::class,'destroy']);
 
 
 
