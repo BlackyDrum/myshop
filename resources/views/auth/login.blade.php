@@ -38,71 +38,107 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="hover:text-green-500">
-                @if(session()->get('login'))
+                @if(\Illuminate\Support\Facades\Auth::user())
                     <a href="/profile"><i class="fa-solid fa-user"></i>
-                        <span class="ml-1.5">{{session()->get('name')}}</span>
+                        <span class="ml-1.5">{{\Illuminate\Support\Facades\Auth::getUser()->forename}}</span>
                     </a>
                 @else
-                    <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
+                    <a href="/login"><i class="fa-solid fa-user"></i></a>
                 @endif
             </div>
-        </nav>
-        <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
+            @if(\Illuminate\Support\Facades\Auth::user())
+                <div class="hover:text-green-500 right-20 absolute">
+                    <a href="sign-out"><i class="fa-solid fa-right-from-bracket"></i><span class="ml-1.5">Abmelden</span></a>
+                </div>
+        @endif
+    </div>
+    </nav>
+    <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
+        <div>
+            <i class="fa-solid fa-magnifying-glass scale-125"></i>
+        </div>
+        <div>
+            <i class="fa-solid fa-cart-shopping scale-125"></i>
+        </div>
+        <div>
+            <button id="nav" onclick="navbar()"><i class="fa-solid fa-bars scale-125"></i></button>
+        </div>
+    </nav>
+    <div id="navbar" class="bg-gray-400 absolute top-20 w-full transition-all lg:hidden z-20">
+        <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-4  place-items-center">
             <div>
-                <i class="fa-solid fa-magnifying-glass scale-125"></i>
+                <a href="/" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Willkommen</a>
             </div>
             <div>
-                <i class="fa-solid fa-cart-shopping scale-125"></i>
+                <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
             </div>
             <div>
-                <button id="nav" onclick="navbar()"><i class="fa-solid fa-bars scale-125"></i></button>
+                @if(\Illuminate\Support\Facades\Auth::user())
+                    <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
+                @else
+                    <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
+                @endif
             </div>
-        </nav>
-        <div id="navbar" class="bg-gray-400 absolute top-20 w-full transition-all lg:hidden z-20">
-            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-4  place-items-center">
-                <div>
-                    <a href="/" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Willkommen</a>
-                </div>
-                <div>
-                    <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
-                </div>
-                <div>
-                    @if(session()->get('login'))
-                        <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
-                    @else
-                        <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
-                    @endif
-                </div>
-                <div>
-                    <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
-                </div>
+            <div>
+                <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
             </div>
         </div>
+    </div>
     </div>
 </header>
 <main class="relative h-screen flex justify-center align-items-center">
     <div class="my-auto">
         <h2 class="font-bold text-2xl">Anmelden</h2><br>
-        <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
-            <h3 class="font-bold">Einloggen</h3>
-            <form method="post" action="/login-verification">
+        <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-8 relative bg-gray-300">
+
+            <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <input class="mb-4 hover:border-black w-full " required  type="email" name="email" placeholder="E-Mail-Adresse"><br>
-                <input type="password" class="hover:border-black w-full" required  name="password" placeholder="Passwort"><br>
-                <div class="absolute right-0 mr-4 bottom-0">
-                    <a class="underline">Passwort vergessen?</a>
+
+                <!-- Email Address -->
+                <div>
+                    <x-input-label for="email" :value="__('Email')" />
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
-                <button type="submit" value="Einloggen" class="absolute pointer-event left-1/2 -translate-x-1/2 lg:mt-10 mt-12 border-2 border-black w-3/4 h-12 text-white bg-blue-900">Einloggen </button>
-                @if(isset($errMsg))
-                    <p class="text-red-500 font-bold text-sm">{{$errMsg}}</p>
-                @endif
+
+                <!-- Password -->
+                <div class="mt-4">
+                    <x-input-label for="password" :value="__('Passwort')" />
+
+                    <x-text-input id="password" class="block mt-1 w-full"
+                                  type="password"
+                                  name="password"
+                                  required autocomplete="current-password" />
+
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+                <!-- Remember Me -->
+                <div class="block mt-4">
+                    <label for="remember_me" class="inline-flex items-center">
+                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                        <span class="ml-2 text-sm text-gray-600">{{ __('Eingeloggt bleiben') }}</span>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                    @if (Route::has('password.request'))
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                            {{ __('Passwort vergessen?') }}
+                        </a>
+                    @endif
+
+                    <x-primary-button class="ml-3">
+                        {{ __('Einloggen') }}
+                    </x-primary-button>
+                </div>
             </form>
         </div>
 
         <div class="mt-10">
             <h1 class="lg:text-3xl text-xl font-bold">Ich bin neu hier</h1>
             <div class="text-center mt-5">
-                <a class="border-black hover:bg-gray-500 border-2 border-solid text-center p-3 lg:px-48 px-24" href="/registration">Registrieren</a>
+                <a class="border-black hover:bg-gray-500 border-2 border-solid text-center p-3 lg:px-48 px-24" href="/register">Registrieren</a>
             </div>
         </div>
     </div>

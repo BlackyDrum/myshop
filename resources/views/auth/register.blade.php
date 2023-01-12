@@ -83,12 +83,10 @@
 <main class="relative h-screen flex justify-center align-items-center flex-grow-0">
     <div class="my-auto">
         <h2 class="font-bold text-2xl">Registrieren</h2><br>
-        <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
+        <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-8 relative bg-gray-300">
             <h3 class="font-bold">Benutzerkonto erstellen</h3>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-
-
                 <div class="">
                     <select name="gender" class="mb-4 w-full h-10 border-gray-300 border-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                         <option value="f">Frau</option>
@@ -140,13 +138,9 @@
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
-
-                    <x-primary-button class="ml-4">
-                        {{ __('Register') }}
+                <div class="flex items-center justify-center mt-4">
+                    <x-primary-button class="mx-4 w-full py-3">
+                        {{ __('Registrieren') }}
                     </x-primary-button>
                 </div>
             </form>

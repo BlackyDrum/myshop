@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <title>Registrierung</title>
+    <title>Willkommen bei Shop</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
     <link rel="stylesheet" href="css/home.css" />
     <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
-    <script src="js/registration.js"></script>
+    <script src="js/config.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/app.css')
 </head>
@@ -21,7 +21,7 @@
             <a href="/"><img src="img/logo-home.png" alt="Logo" class="w-16"></a>
         </div>
         <nav class="mr-80 mt-auto mb-auto flex gap-6 text-gray-800 max-lg:hidden">
-            <div class="hover:underline decoration-2 decoration-green-500 underline-offset-8 ">
+            <div class="underline decoration-2 decoration-green-500 underline-offset-8 font-bold">
                 <a href="/">Willkommen</a>
             </div>
             <div class="hover:underline decoration-2 decoration-green-500 underline-offset-8 ">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="hover:underline decoration-2 decoration-green-500 underline-offset-8 ">
-                <a href="contact">Kontakt</a>
+                <a href="/contact">Kontakt</a>
             </div>
             <div class="hover:text-green-500">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -38,14 +38,19 @@
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
             <div class="hover:text-green-500">
-                @if(session()->get('login'))
+                @if(\Illuminate\Support\Facades\Auth::user())
                     <a href="/profile"><i class="fa-solid fa-user"></i>
-                        <span class="ml-1.5">{{session()->get('name')}}</span>
+                        <span class="ml-1.5">{{\Illuminate\Support\Facades\Auth::getUser()->forename}}</span>
                     </a>
                 @else
-                    <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
+                    <a href="/login"><i class="fa-solid fa-user"></i></a>
                 @endif
             </div>
+            @if(\Illuminate\Support\Facades\Auth::user())
+                <div class="hover:text-green-500 right-20 absolute">
+                    <a href="sign-out"><i class="fa-solid fa-right-from-bracket"></i><span class="ml-1.5">Abmelden</span></a>
+                </div>
+            @endif
         </nav>
         <nav class="mr-40 max-sm:mr-10 mt-auto mb-auto flex gap-6 text-gray-800 lg:hidden grid grid-cols-3">
             <div>
@@ -59,109 +64,63 @@
             </div>
         </nav>
         <div id="navbar" class="bg-gray-400 absolute top-20 w-full transition-all lg:hidden z-20">
-            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-4  place-items-center">
+            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-5 place-items-center">
                 <div>
-                    <a href="/" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Willkommen</a>
+                    <a href="/" class="font-bold">Willkommen</a>
                 </div>
                 <div>
                     <a href="/shop" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Shop</a>
                 </div>
                 <div>
-                    @if(session()->get('login'))
+                    @if(\Illuminate\Support\Facades\Auth::user())
                         <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
                     @else
-                        <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
+                        <a href="/login" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Anmelden</a>
                     @endif
                 </div>
                 <div>
                     <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
                 </div>
+                @if(\Illuminate\Support\Facades\Auth::user())
+                    <div>
+                        <a href="/sign-out" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Ausloggen</a>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>
 </header>
-<main class="relative h-screen flex justify-center align-items-center flex-grow-0">
-    <div class="my-auto">
-        <h2 class="font-bold text-2xl">Registrieren</h2><br>
-        <div class="border-solid border-black border-2 pt-4 pl-2 pr-2 pb-32 relative bg-gray-300">
-            <h3 class="font-bold">Benutzerkonto erstellen</h3>
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Profile') }}
+        </h2>
+    </x-slot>
 
-
-                <div class="">
-                    <select name="gender" class="mb-4 w-full h-10 border-gray-300 border-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                        <option value="f">Frau</option>
-                        <option value="m">Herr</option>
-                    </select>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('profile.partials.update-profile-information-form')
                 </div>
+            </div>
 
-                <!-- Name -->
-                <div >
-                    <x-input-label for="forename" :value="__('Vorname')" />
-                    <x-text-input id="forename" class="block mt-1 w-full" type="text" name="forename" :value="old('forename')" required autofocus />
-                    <x-input-error :messages="$errors->get('forename')" class="mt-2" />
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('profile.partials.update-password-form')
                 </div>
+            </div>
 
-                <!-- Name -->
-                <div class="mt-4">
-                    <x-input-label for="surname" :value="__('Nachname')" />
-                    <x-text-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus />
-                    <x-input-error :messages="$errors->get('surname')" class="mt-2" />
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('profile.partials.delete-user-form')
                 </div>
-
-                <!-- Email Address -->
-                <div class="mt-4">
-                    <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                </div>
-
-                <!-- Password -->
-                <div class="mt-4">
-                    <x-input-label for="password" :value="__('Password')" />
-
-                    <x-text-input id="password" class="block mt-1 w-full"
-                                  type="password"
-                                  name="password"
-                                  required autocomplete="new-password" />
-
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                </div>
-
-                <!-- Confirm Password -->
-                <div class="mt-4">
-                    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                    <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                  type="password"
-                                  name="password_confirmation" required />
-
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                </div>
-
-                <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
-
-                    <x-primary-button class="ml-4">
-                        {{ __('Register') }}
-                    </x-primary-button>
-                </div>
-            </form>
-        </div>
-
-        <div class="mt-10">
-            <h1 class="lg:text-3xl text-xl font-bold">Ich bin schon registriert</h1>
-            <div class="text-center mt-5">
-                <a class="border-black hover:bg-gray-500 border-2 border-solid text-center p-3 lg:px-48 px-24" href="/login">Anmelden</a>
             </div>
         </div>
     </div>
-
-</main>
-<footer class="pt-64">
+</x-app-layout>
+<footer>
     <div class="mt-5 bg-neutral-800 h-80 text-white flex flex-1 flex-shrink-1 justify-evenly flex-wrap max-lg:hidden">
         <div class="mt-20">
             <h4 class="text-neutral-400">Kontaktiere uns!</h4><br>
@@ -291,5 +250,3 @@
         <p class="">Alle Preise inkl. der gesetzl. MwSt. und zzgl. <span class="text-neutral-200">Versandkosten</span></p>
     </div>
 </footer>
-
-</body>

@@ -118,6 +118,7 @@ class AuthController extends BaseController {
     public function sign_out() {
         session()->flush();
         session_regenerate_id();
+        \Illuminate\Support\Facades\Auth::logout();
         return \redirect()->action([HomeController::class,'index']);
     }
 }
