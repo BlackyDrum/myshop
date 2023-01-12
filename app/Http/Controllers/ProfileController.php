@@ -29,8 +29,14 @@ class ProfileController extends Controller
 
         $request->user()->fill($request->validated());
 
+
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
+        }
+
+        if (ctype_alpha($request->input('forename')) && ctype_alpha($request->input('surname'))) {
+            $request->user()->forename = $request->input('forename');
+            $request->user()->surname = $request->input('surname');
         }
 
         $request->user()->save();
