@@ -89,8 +89,8 @@
                 @csrf
 
 
-                <div class="">
-                    <select name="gender" class="mb-4 w-full h-10 border-gray-300 border-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                <div >
+                    <select name="gender" id="gender" required autofocus class="mb-4 w-full h-10 border-gray-300 border-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                         <option value="f">Frau</option>
                         <option value="m">Herr</option>
                     </select>
