@@ -21,7 +21,7 @@
             <a href="/"><img src="img/logo-home.png" alt="Logo" class="w-16"></a>
         </div>
         <nav class="mr-80 mt-auto mb-auto flex gap-6 text-gray-800 max-lg:hidden">
-            <div class="underline decoration-2 decoration-green-500 underline-offset-8 font-bold">
+            <div class="hover:underline decoration-2 decoration-green-500 underline-offset-8 ">
                 <a href="/">Willkommen</a>
             </div>
             <div class="hover:underline decoration-2 decoration-green-500 underline-offset-8 ">
@@ -43,7 +43,7 @@
                         <span class="ml-1.5">{{\Illuminate\Support\Facades\Auth::getUser()->forename}}</span>
                     </a>
                 @else
-                    <a href="/login"><i class="fa-solid fa-user"></i></a>
+                    <a href="/login"><i class="fa-solid fa-user text-green-500"></i></a>
                 @endif
             </div>
             @if(\Illuminate\Support\Facades\Auth::user())
