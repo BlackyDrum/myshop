@@ -209,7 +209,7 @@
             <div class="">
                 <i class="fa-solid fa-envelope scale-150 text-pink-600 my-5"></i>
             </div>
-            Echte Freunde sagen einander auch, falls mal etwas nicht ganz rund läuft. Sollte Qualität dich also einmal nicht überzeugen, freuen wir uns über ehrliches Feedback.
+            Wir freuen uns immer über ehrliches Feedback.
         </div>
     </div>
     <div class="w-full lg:h-40 h-72 text-center mt-10 grid grid-cols-1 grid-rows-4 gap">
@@ -220,7 +220,7 @@
             <h2 class="font-bold text-2xl">Newsletter abonnieren</h2>
         </div>
         @if($errorMsg)
-            <div class="text-red-600 font-bold">
+            <div class="text-red-600 font-bold text-sm">
                 {{$errorMsg}}
             </div>
         @elseif($successMsg)
@@ -243,7 +243,7 @@
             </form>
             <form class=" grid grid-cols-1 grid-rows-2 place-items-center lg:hidden gap-2" method="post" action="/newsletter-anmeldung">
                 <div>
-                    <input type="email" name="newsletter-mail" class="rounded-lg" size="40" placeholder="Ihre E-Mail-Adresse">
+                    <input type="email" name="newsletter-mail" class="rounded-lg" size="30" placeholder="Ihre E-Mail-Adresse">
                 </div>
                 <div >
                     <input type="submit" value="Kostenlos abonnieren" name="submit" class="border-2 text-gray-800 border-solid border-gray-500 p-1 w-72 bg-white rounded-sm cursor-pointer">
