@@ -65,7 +65,7 @@
             </div>
         </nav>
         <div id="navbar" class="bg-gray-400 absolute top-20 w-full transition-all lg:hidden z-20">
-            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-4  place-items-center">
+            <div id="navitems" class="h-full text-gray-800 text-center grid grid-cols-1 grid-rows-5  place-items-center">
                 <div>
                     <a href="/" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Willkommen</a>
                 </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div>
                     @if(\Illuminate\Support\Facades\Auth::user())
-                        <a href="/profile" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Profil</a>
+                        <a href="/profile" class="underline decoration-2 font-bold underline-offset-8">Profil</a>
                     @else
                         <a href="/login" class="underline decoration-2 font-bold underline-offset-8">Anmelden</a>
                     @endif
@@ -82,6 +82,11 @@
                 <div>
                     <a href="/contact" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Kontakt</a>
                 </div>
+                @if(\Illuminate\Support\Facades\Auth::user())
+                    <div>
+                        <a href="/sign-out" class="hover:underline decoration-2 hover:font-bold underline-offset-8">Ausloggen</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
