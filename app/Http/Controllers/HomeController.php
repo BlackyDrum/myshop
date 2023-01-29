@@ -16,6 +16,8 @@ class HomeController extends BaseController
             'errorMsg' => $errMsg,
             'successMsg' => $successMsg
         ]);
+
+
     }
 
     public function newsletter(Request $rd) {

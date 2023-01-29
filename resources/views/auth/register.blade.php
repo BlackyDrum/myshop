@@ -88,7 +88,7 @@
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="">
-                    <select name="gender" class="mb-4 w-full h-10 border-gray-300 border-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                    <select name="gender" class="mb-4 w-full h-11 border-gray-300 border-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                         <option value="f">Frau</option>
                         <option value="m">Herr</option>
                     </select>
