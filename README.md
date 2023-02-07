@@ -31,7 +31,11 @@ php artisan migrate
 ```
 npm install
 ```
-9. Start the development server by running the following command:
+9. Run the following command to compile the front-end assets:
+```
+npm run dev
+```
+10. Start the development server by running the following command:
 ```
 php artisan serve
 ```
