@@ -8,7 +8,7 @@
 ## Requirements
 1. PHP Version ^8.1
 2. Composer
-3. Node.js and npm Version ^18.12
+3. Node.js and npm
 
 ## Steps
 1. Clone the repository to your local machine.
