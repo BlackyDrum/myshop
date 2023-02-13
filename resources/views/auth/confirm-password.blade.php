@@ -1,3 +1,4 @@
+
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Dies ist ein gesicherter Bereich der Anwendung. Bitte bestätigen Sie Ihr Passwort, bevor Sie fortfahren.') }}
